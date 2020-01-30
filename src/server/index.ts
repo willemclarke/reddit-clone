@@ -1,6 +1,6 @@
 import { Application, Request, Response } from "express";
 import * as _ from "lodash";
-const express = require("express");
+import * as express from "express";
 
 const app: Application = express();
 const port = process.env.HTTP_PORT || 3000;
@@ -14,8 +14,5 @@ app.get("/api/", (req: Request, res: Response) => {
 
 app.use(express.static("dist/client"));
 
-(async () => {
-  app.listen(port, async () => {
-    console.log(`Server listening on port ${port}`);
-  });
-})();
+app.listen(port);
+console.log(`Server listening on ${port}`);
