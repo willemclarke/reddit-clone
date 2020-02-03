@@ -7,10 +7,11 @@ const port = process.env.HTTP_PORT || 3000;
 
 app.get("/api/posts", (req: Request, res: Response) => {
   console.info(`This is an API request. Request path is: ${req.path}`);
-  res.status(200).json({
-    hello: "world",
-    post: "get posts"
-  });
+  res.status(200).json([
+    { title: "title", content: "content" },
+    { title: "title", content: "content" },
+    { title: "title", content: "content" }
+  ]);
 });
 app.get("/api/posts/:id", (req: Request, res: Response) => {
   console.info(`This is an API request. Request path is: ${req.path}`);
@@ -21,15 +22,13 @@ app.get("/api/posts/:id", (req: Request, res: Response) => {
 });
 app.delete("/api/posts/:id", (req: Request, res: Response) => {
   console.info(`This is an API request. Request path is: ${req.path}`);
-  res.status(200).json({
-    hello: "world"
-  });
+  res.status(200);
 });
 app.post("/api/posts", (req: Request, res: Response) => {
   console.info(`This is an API request. Request path is: ${req.path}`);
   res.status(200).json({
     title: "title",
-    body: "content"
+    content: "content"
   });
 });
 
