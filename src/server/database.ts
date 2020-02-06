@@ -1,6 +1,6 @@
 import { Post, PostRequest } from "../common/types";
 import * as _ from "lodash";
-const uuidv1 = require("uuid/v1");
+import * as uuidv1 from "uuid/v1";
 
 export class Database {
   posts: Post[];
@@ -17,5 +17,9 @@ export class Database {
       content: postReq.content
     };
     this.posts.push(post);
+  }
+
+  getPosts(): Post[] {
+    return this.posts;
   }
 }

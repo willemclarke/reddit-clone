@@ -10,12 +10,7 @@ const port = process.env.HTTP_PORT || 3000;
 app.use(bodyParser.json());
 
 app.get("/api/posts", (req: Request, res: Response) => {
-  console.info(`This is an API request. Request path is: ${req.path}`);
-  res.status(200).json([
-    { title: "title", content: "content" },
-    { title: "title", content: "content" },
-    { title: "title", content: "content" }
-  ]);
+  res.status(200).json(database.getPosts());
 });
 app.get("/api/posts/:id", (req: Request, res: Response) => {
   console.info(`This is an API request. Request path is: ${req.path}`);
