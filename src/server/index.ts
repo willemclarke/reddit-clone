@@ -30,7 +30,6 @@ app.delete("/api/posts/:id", (req: Request, res: Response) => {
 app.post("/api/posts", (req: Request, res: Response) => {
   const post = req.body;
   database.storePost(post);
-  console.log(database.posts);
   res.status(200).json(post);
 });
 
