@@ -30,5 +30,7 @@ app.post("/api/posts", (req: Request, res: Response) => {
 
 app.use(express.static("dist/client"));
 
-app.listen(port);
-console.log(`Server listening on ${port}`);
+// app.listen(port);
+// console.log(`Server listening on ${port}`);
+
+module.exports = app;
