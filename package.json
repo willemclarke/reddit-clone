@@ -20,17 +20,23 @@
     "develop:server:src": "tsc -w",
     "develop:server:dist": "nodemon dist/server/index.js",
     "develop:client": "parcel watch src/client/index.html --out-dir dist/client",
-    "develop": "npm-run-all -p develop:server:src develop:server:dist develop:client"
+    "develop": "npm-run-all -p develop:server:src develop:server:dist develop:client",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.1",
     "@types/express": "^4.17.2",
+    "@types/jest": "^25.1.2",
     "@types/lodash": "^4.14.149",
     "@types/node": "^13.5.1",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "@types/supertest": "^2.0.8",
     "@types/uuid": "^3.4.7",
+    "jest": "^24.9.0",
     "nodemon": "^2.0.2",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.7.5"
   }
 }
