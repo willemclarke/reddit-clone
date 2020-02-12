@@ -9,7 +9,7 @@ export class Database {
     this.posts = [];
   }
 
-  storePost(postReq: PostRequest): void {
+  storePost(postReq: PostRequest): Post {
     const id: string = uuidv1();
     const post: Post = {
       id: id,
@@ -17,6 +17,7 @@ export class Database {
       content: postReq.content
     };
     this.posts.push(post);
+    return post;
   }
 
   getPosts(): Post[] {
