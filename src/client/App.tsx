@@ -12,23 +12,17 @@ const { Header, Footer, Sider, Content } = Layout;
 
 export const App: React.FC = () => {
   const [data, loading] = useFetch("http://localhost:3000/api/posts");
-  if (loading) {
-    return <h1>Loading</h1>;
-  } else {
-    return (
-      <div>
-        <Layout>
-          <Header>Reddit Clone</Header>
-          <Layout>
-            <Content>
-              Content
-              <PostsList posts={data} />
-            </Content>
-            <Sider>Sider</Sider>
-          </Layout>
-          <Footer>Footer</Footer>
-        </Layout>
-      </div>
-    );
-  }
+
+  const content = loading ? <h1>Loading</h1> : <PostsList posts={data} />;
+
+  return (
+    <Layout>
+      <Header>Reddit Clone</Header>
+      <Layout>
+        <Content>{content}</Content>
+        <Sider>Sider</Sider>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
+  );
 };
