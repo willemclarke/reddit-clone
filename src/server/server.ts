@@ -1,5 +1,6 @@
 import { Application, Request, Response } from "express";
 import { Database } from "../server/database";
+import * as historyFallback from "connect-history-api-fallback";
 import * as _ from "lodash";
 import * as express from "express";
 import * as bodyParser from "body-parser";
@@ -27,6 +28,8 @@ export const createApp = (database: Database) => {
     const post = database.storePost(postReq);
     res.status(200).json(post);
   });
+
+  app.use(historyFallback());
 
   app.use(express.static("dist/client"));
   return app;

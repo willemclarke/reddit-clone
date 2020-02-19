@@ -1,28 +1,42 @@
 import React from "react";
 import * as _ from "lodash";
-import { useFetch } from "./hooks/fetch";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import { PostsList } from "./components/PostsList";
+import { Home } from "./pages/Home";
+import { CreatePost } from "./pages/CreatePost";
 
 import "./index.less";
 import "antd/dist/antd.css";
-import { Layout } from "antd";
+import { Layout, Menu } from "antd";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 export const App: React.FC = () => {
-  const [data, loading] = useFetch("http://localhost:3000/api/posts");
-
-  const content = loading ? <h1>Loading</h1> : <PostsList posts={data} />;
-
   return (
-    <Layout>
-      <Header>Reddit Clone</Header>
+    <Router>
       <Layout>
-        <Content>{content}</Content>
-        <Sider>Sider</Sider>
+        <Header>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]} style={{ lineHeight: "64px" }}>
+            <Menu.Item key="1">
+              <Link to="/">Home</Link>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <Link to="/create">Create</Link>
+            </Menu.Item>
+          </Menu>
+        </Header>
+        <Content>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/create">
+              <CreatePost />
+            </Route>
+          </Switch>
+        </Content>
+        <Footer>Footer</Footer>
       </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
+    </Router>
   );
 };
