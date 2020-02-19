@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { CreatePost } from "./pages/CreatePost";
 
-import "./index.less";
 import "antd/dist/antd.css";
 import { Layout, Menu } from "antd";
 
@@ -25,17 +24,26 @@ export const App: React.FC = () => {
             </Menu.Item>
           </Menu>
         </Header>
-        <Content>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/create">
-              <CreatePost />
-            </Route>
-          </Switch>
+        <Content style={{ padding: "0 20px" }}>
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              minHeight: "calc(100vh-64px)",
+              marginTop: "20px"
+            }}
+          >
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/create">
+                <CreatePost />
+              </Route>
+            </Switch>
+          </div>
         </Content>
-        <Footer>Footer</Footer>
+        <Footer style={{ backgroundColor: "#F0F2F5", textAlign: "center" }}>Reddit Clone</Footer>
       </Layout>
     </Router>
   );
